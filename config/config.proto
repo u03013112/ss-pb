@@ -11,6 +11,12 @@ service SSConfig {
             body: "*"
         };
     }
+    rpc GetSSConfig(GetSSConfigRequest) returns (GetSSConfigReply){
+        option (google.api.http) = {
+            post: "/v1/config/get-config"
+            body: "*"
+        };
+    }
 }
 
 message TestRequest {
@@ -19,4 +25,15 @@ message TestRequest {
 
 message TestReply {
     string message = 1;
+}
+
+message GetSSConfigRequest{
+    string token = 1;
+}
+
+message GetSSConfigReply{
+    string IP = 1;
+    string port = 2;
+    string method = 3;
+    string passwd = 4;
 }
