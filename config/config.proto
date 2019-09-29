@@ -1,0 +1,15 @@
+syntax = "proto3";
+package config;
+option go_package = "github.com/u03013112/ss-pb/config";
+
+service SSConfig {
+    rpc Test (TestRequest) returns (TestReply) {}
+}
+
+message TestRequest {
+    string name = 1;
+}
+
+message TestReply {
+    string message = 1;
+}
