@@ -2,8 +2,15 @@ syntax = "proto3";
 package config;
 option go_package = "github.com/u03013112/ss-pb/config";
 
+import "google/api/annotations.proto";
+
 service SSConfig {
-    rpc Test (TestRequest) returns (TestReply) {}
+    rpc Test (TestRequest) returns (TestReply) {
+        option (google.api.http) = {
+            post: "/v1/config/test"
+            body: "*"
+        };
+    }
 }
 
 message TestRequest {
