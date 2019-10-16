@@ -1,0 +1,21 @@
+syntax = "proto3";
+package ios;
+option go_package = "github.com/u03013112/ss-pb/ios";
+
+import "google/api/annotations.proto";
+
+service IOS {
+    rpc Purchase (PurchaseRequest) returns (PurchaseReply){
+        option (google.api.http) = {
+            post: "/v1/ios-purchase"
+            body: "*"
+        };
+    }
+}
+
+message PurchaseRequest {
+    string data = 1;
+}
+message PurchaseReply {
+    string success = 1;
+}
