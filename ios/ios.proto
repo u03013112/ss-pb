@@ -5,17 +5,33 @@ option go_package = "github.com/u03013112/ss-pb/ios";
 import "google/api/annotations.proto";
 
 service IOS {
-    rpc Purchase (PurchaseRequest) returns (PurchaseReply){
+    rpc Login (LoginRequest) returns (LoginReply){
         option (google.api.http) = {
-            post: "/v1/ios-purchase"
+            post: "/v1/ios/login"
             body: "*"
         };
     }
+    rpc Purchase (PurchaseRequest) returns (PurchaseReply){
+        option (google.api.http) = {
+            post: "/v1/ios/purchase"
+            body: "*"
+        };
+    }
+
+}
+
+message LoginRequest {
+    string uuid = 1;
+}
+
+message LoginReply {
+    int64 expiresDate = 1;
 }
 
 message PurchaseRequest {
-    string data = 1;
+    string uuid = 1;
+    string data = 2;
 }
 message PurchaseReply {
-    string success = 1;
+    int64 expiresDate = 1;
 }
