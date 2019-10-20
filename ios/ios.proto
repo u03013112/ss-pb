@@ -17,7 +17,12 @@ service IOS {
             body: "*"
         };
     }
-
+    rpc GetConfig (GetConfigRequest) returns (GetConfigReply){
+        option (google.api.http) = {
+            post: "/v1/ios/config"
+            body: "*"
+        };
+    }
 }
 
 message LoginRequest {
@@ -25,7 +30,8 @@ message LoginRequest {
 }
 
 message LoginReply {
-    int64 expiresDate = 1;
+    string token = 1;
+    int64 expiresDate = 2;
 }
 
 message PurchaseRequest {
@@ -34,4 +40,15 @@ message PurchaseRequest {
 }
 message PurchaseReply {
     int64 expiresDate = 1;
+}
+
+message GetConfigRequest {
+    string token = 1;
+}
+message GetConfigReply {
+    string IP = 1;
+    string port = 2;
+    string method = 3;
+    string passwd = 4;
+    int64 expiresDate = 5;
 }
