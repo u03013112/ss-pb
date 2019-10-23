@@ -35,7 +35,7 @@ message LoginReply {
 }
 
 message PurchaseRequest {
-    string uuid = 1;
+    string token = 1;
     string data = 2;
 }
 message PurchaseReply {
