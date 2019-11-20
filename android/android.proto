@@ -23,6 +23,18 @@ service Android {
             body: "*"
         };
     }
+    rpc GetProdectionList (GetProdectionListRequest) returns (GetProdectionListReply){
+        option (google.api.http) = {
+            post: "/v1/android/getProdectionList"
+            body: "*"
+        };
+    }
+    rpc BuyTest (BuyTestRequest) returns (BuyTestReply){
+        option (google.api.http) = {
+            post: "/v1/android/buyTest"
+            body: "*"
+        };
+    }
 }
 
 message LoginRequest {
@@ -57,4 +69,27 @@ message KeepaliveReply {
     int64 expiresDate = 2;
     int64 total = 3;
     int64 used = 4;
+}
+
+message GetProdectionListRequest {
+    string token = 1;
+}
+message Prodection {
+    int64 ID = 1;
+    int64 time = 2;
+    int64 total = 3;
+    int64 price = 4;
+}
+message GetProdectionListReply {
+    repeated Prodection prodectionList = 1;
+}
+
+message BuyTestRequest {
+    string token = 1;
+    int64 prodectionID = 2;
+}
+message BuyTestReply {
+    int64 expiresDate = 1;
+    int64 total = 2;
+    int64 used = 3;
 }
