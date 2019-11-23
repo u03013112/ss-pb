@@ -46,6 +46,8 @@ message LoginReply {
     int64 expiresDate = 2;
     int64 total = 3;
     int64 used = 4;
+
+    string error = 9;
 }
 
 message GetConfigRequest {
@@ -57,6 +59,8 @@ message GetConfigReply {
     string port = 2;
     string method = 3;
     string passwd = 4;
+
+    string error = 9;
 }
 
 message KeepaliveRequest {
@@ -69,6 +73,8 @@ message KeepaliveReply {
     int64 expiresDate = 2;
     int64 total = 3;
     int64 used = 4;
+
+    string error = 9;
 }
 
 message GetProdectionListRequest {
@@ -83,6 +89,8 @@ message Prodection {
 }
 message GetProdectionListReply {
     repeated Prodection prodectionList = 1;
+
+    string error = 9;
 }
 
 message BuyTestRequest {
@@ -93,4 +101,6 @@ message BuyTestReply {
     int64 expiresDate = 1;
     int64 total = 2;
     int64 used = 3;
+
+    string error = 9;
 }
