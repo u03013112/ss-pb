@@ -35,6 +35,12 @@ service Android {
             body: "*"
         };
     }
+    rpc GetGoogleAd (GetGoogleAdRequest) returns (GetGoogleAdReply){
+        option (google.api.http) = {
+            post: "/v1/android/getGoogleAd"
+            body: "*"
+        };
+    }
 }
 
 message LoginRequest {
@@ -103,4 +109,11 @@ message BuyTestReply {
     int64 used = 3;
 
     string error = 9;
+}
+
+message GetGoogleAdRequest {
+    string token = 1;
+}
+message GetGoogleAdReply {
+    string id = 1;
 }
