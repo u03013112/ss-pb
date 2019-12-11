@@ -41,6 +41,8 @@ service Android {
             body: "*"
         };
     }
+
+    rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoReply) {}
 }
 
 message LoginRequest {
@@ -116,4 +118,12 @@ message GetGoogleAdRequest {
 }
 message GetGoogleAdReply {
     string id = 1;
+}
+
+message GetUserInfoRequest {
+    string token = 1;
+}
+
+message GetUserInfoReply {
+    string status = 1; //normal,expired,outOfTraffic and so on
 }
