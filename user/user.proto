@@ -12,23 +12,34 @@ service SSUser {
         };
     }
 
-    rpc GetRoles(GetRolesRequest) returns (GetRolesReply){}
+    rpc GetRoles(GetRolesRequest) returns (GetRolesReply) {}
+
+    rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoReply) {}
 }
 
 
-message LoginRequest{
+message LoginRequest {
     string username = 1;
     string passwd = 2;
 }
 
-message LoginReply{
+message LoginReply {
     string token = 1;
 }
 
-message GetRolesRequest{
+message GetRolesRequest {
     string token = 1;
 }
 
-message GetRolesReply{
+message GetRolesReply {
     string role = 1;//权限，目前应该只是一个枚举“管理员”或者“用户”
+}
+
+message GetUserInfoRequest {
+    string token = 1;
+}
+
+message GetUserInfoReply {
+    string type = 1; //android
+    string status = 2; //normal,vip,expired,outOfTraffic and so on
 }
