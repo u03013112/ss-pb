@@ -47,6 +47,7 @@ service Android {
 
 message LoginRequest {
     string uuid = 1;
+    string version = 2;
 }
 
 message LoginReply {
